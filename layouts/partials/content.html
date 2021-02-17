@@ -1,11 +1,11 @@
-<header class="text-left title">
+<header class="row text-left title">
   <h1 class="title">{{ .Title }}</h1>
 </header>
-<section id="category-pane" class="meta">
+<section id="category-pane" class="row meta">
   {{ if ne .Params.showpagemeta false }}
   <div class="col-md-12">
     <h6 class="text-left meta">
-       {{ if not .Date.IsZero }} PUBLISHED ON {{ .Date.Format .Site.Params.dateformat | upper }} {{end}}
+      PUBLISHED ON {{ .Date.Format .Site.Params.dateformat | upper }}
       {{ if isset .Params "categories" }}
       {{ $total := len .Params.categories }}
       {{ if gt $total 0 }}
@@ -20,15 +20,12 @@
   </div>
   {{ end }}
 </section>
-<section id="content-pane" class="">
+<section id="content-pane" class="row">
   <div class="col-md-12 text-justify content">
-    {{ if and ( ne .Params.toc false) (gt .WordCount 300 ) }}
-    {{ .TableOfContents }}
-    {{ end }}
     {{ .Content }}
   </div>
 </section>
-<section id="tag-pane" class="meta">
+<section id="tag-pane" class="row meta">
   {{ if ne .Params.showpagemeta false }}
   <div class="col-md-12">
     <h6 class="text-right meta">

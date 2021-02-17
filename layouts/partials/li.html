@@ -1,10 +1,10 @@
-<section id="list-pane" class="list">
+<section id="list-pane" class="row list">
   <ul >
-    {{ range .Data.Pages.ByPublishDate.Reverse }}
+    {{ range .Data.Pages.ByPublishDate }}
     <li class="list-entry">
-      <a class="list-entry-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <a class="list-entry-link" href="{{ .Permalink }}">{{ .Title }}</a>
       <p class="meta">
-        {{ if not .Date.IsZero }} {{ .Date.Format .Site.Params.dateformat | upper }} {{end}}
+        {{ .Date.Format .Site.Params.dateformat | upper }}
         <span class="category">
         {{ if isset .Params "categories" }}
         {{ $total := len .Params.categories }}
