@@ -14,10 +14,7 @@
 
 <title>{{ .Site.Title }}</title>
 
-{{ if .RSSLink }}
-  <link href="{{ . }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-  <link href="{{ . }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-{{ end }}
+{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}
 
 {{ if .Site.Params.extra.highlightjs }}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{ .Site.Params.extra.highlightjsstyle | default "default" }}.min.css">
