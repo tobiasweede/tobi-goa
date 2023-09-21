@@ -14,7 +14,10 @@
 
 <title>{{ .Site.Title }}</title>
 
-{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}
+{{ with .OutputFormats.Get "rss" -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+
 
 {{ if .Site.Params.extra.highlightjs }}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{ .Site.Params.extra.highlightjsstyle | default "default" }}.min.css">
